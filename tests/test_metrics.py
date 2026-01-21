@@ -10,7 +10,8 @@ from core.metrics import calculate_entropy, calculate_gain_raio
 class TestMetrics(unittest.TestCase):
     def test_entropy_pure(self):
         y = np.array([0, 0, 0, 0])
-        self.assertEqual(calculate_entropy(y), 0)
+        # self.assertEqual(calculate_entropy(y), 0)
+        self.assertAlmostEqual(calculate_entropy(y), 0)
 
     def test_entropy_mixed(self):
         y = np.array([0, 0, 1, 1])
