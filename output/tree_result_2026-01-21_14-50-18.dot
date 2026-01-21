@@ -1,0 +1,50 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"];
+edge [fontname="helvetica"];
+0 [label="Outlook\n<= 0.000?", style="filled", fillcolor="#ADD8E6"];
+1 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+0 -> 1 [label="True"];
+2 [label="Humidity\n<= 0.000?", style="filled", fillcolor="#ADD8E6"];
+0 -> 2 [label="False"];
+3 [label="Outlook\n<= 1.000?", style="filled", fillcolor="#ADD8E6"];
+2 -> 3 [label="True"];
+4 [label="Wind\n<= 0.000?", style="filled", fillcolor="#ADD8E6"];
+3 -> 4 [label="True"];
+5 [label="Prediction:\nClass 0", style="filled", fillcolor="#90EE90"];
+4 -> 5 [label="True"];
+6 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+4 -> 6 [label="False"];
+7 [label="Prediction:\nClass 0", style="filled", fillcolor="#90EE90"];
+3 -> 7 [label="False"];
+8 [label="Wind\n<= 0.000?", style="filled", fillcolor="#ADD8E6"];
+2 -> 8 [label="False"];
+9 [label="Outlook\n<= 1.000?", style="filled", fillcolor="#ADD8E6"];
+8 -> 9 [label="True"];
+10 [label="Prediction:\nClass 0", style="filled", fillcolor="#90EE90"];
+9 -> 10 [label="True"];
+11 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+9 -> 11 [label="False"];
+12 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+8 -> 12 [label="False"];
+}
+
+--- RULES RESULT ---
+IF Outlook <= 0.000:
+    THEN Prediction = Class 1
+IF Outlook > 0.000:
+    IF Humidity <= 0.000:
+        IF Outlook <= 1.000:
+            IF Wind <= 0.000:
+                THEN Prediction = Class 0
+            IF Wind > 0.000:
+                THEN Prediction = Class 1
+        IF Outlook > 1.000:
+            THEN Prediction = Class 0
+    IF Humidity > 0.000:
+        IF Wind <= 0.000:
+            IF Outlook <= 1.000:
+                THEN Prediction = Class 0
+            IF Outlook > 1.000:
+                THEN Prediction = Class 1
+        IF Wind > 0.000:
+            THEN Prediction = Class 1
