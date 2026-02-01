@@ -1,0 +1,22 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"];
+edge [fontname="helvetica"];
+0 [label="petal length (cm)\n<= 1.900?", style="filled", fillcolor="#ADD8E6"];
+1 [label="Prediction:\nClass 0", style="filled", fillcolor="#90EE90"];
+0 -> 1 [label="True"];
+2 [label="target\n<= 1.000?", style="filled", fillcolor="#ADD8E6"];
+0 -> 2 [label="False"];
+3 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+2 -> 3 [label="True"];
+4 [label="Prediction:\nClass 2", style="filled", fillcolor="#90EE90"];
+2 -> 4 [label="False"];
+}
+
+--- RULES RESULT ---
+IF petal length (cm) <= 1.900:
+    THEN Prediction = Class 0
+IF petal length (cm) > 1.900:
+    IF target <= 1.000:
+        THEN Prediction = Class 1
+    IF target > 1.000:
+        THEN Prediction = Class 2

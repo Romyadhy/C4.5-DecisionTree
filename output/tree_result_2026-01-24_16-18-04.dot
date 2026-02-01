@@ -1,0 +1,22 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"];
+edge [fontname="helvetica"];
+0 [label="target\n<= 1.000?", style="filled", fillcolor="#ADD8E6"];
+1 [label="target\n<= 0.000?", style="filled", fillcolor="#ADD8E6"];
+0 -> 1 [label="True"];
+2 [label="Prediction:\nClass 1", style="filled", fillcolor="#90EE90"];
+1 -> 2 [label="True"];
+3 [label="Prediction:\nClass 2", style="filled", fillcolor="#90EE90"];
+1 -> 3 [label="False"];
+4 [label="Prediction:\nClass 0", style="filled", fillcolor="#90EE90"];
+0 -> 4 [label="False"];
+}
+
+--- RULES RESULT ---
+IF target <= 1.000:
+    IF target <= 0.000:
+        THEN Prediction = Class 1
+    IF target > 0.000:
+        THEN Prediction = Class 2
+IF target > 1.000:
+    THEN Prediction = Class 0

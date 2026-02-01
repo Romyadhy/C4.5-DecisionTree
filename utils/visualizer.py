@@ -1,7 +1,3 @@
-# try:
-#     import graphviz
-# except ImportError:
-#     graphviz = None
 import os
 import graphviz
 
@@ -60,16 +56,13 @@ def export_tree_to_image(
 
         # 4. Recurse to Childern
         if not node.is_leaf:
-            # Left child implies True (<= threshold)
             _traverse_and_draw(node.childern["left"], current_id, "True (<=)")
-            # Right child implies False (> threshold)
             _traverse_and_draw(node.childern["right"], current_id, "False (>)")
 
     # --- Start the recursive drawing process ---
     _traverse_and_draw(root_node)
 
     # --- Save the file ---
-    # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
     full_path = os.path.join(output_dir, filename)
 

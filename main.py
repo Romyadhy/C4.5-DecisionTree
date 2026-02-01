@@ -9,8 +9,8 @@ from utils.visualizer import export_tree_to_image
 from utils.visualizer import export_tree_to_dot
 
 
-FILE_PATH = "dataset/data2.csv"
-TARGET_COLUMN = "PlayTennis"
+FILE_PATH = "dataset/data4.csv"
+TARGET_COLUMN = "target_name"
 LOG_DIR = "logs"
 OUTPUT_DIR = "output"
 
